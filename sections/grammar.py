@@ -1,7 +1,6 @@
 import streamlit as st
 
 from data import GRAMMAR_EXERCISES
-from components.ai_helper import get_ai_feedback
 
 
 def render():
@@ -14,7 +13,6 @@ def render():
         st.session_state.gram_ex_idx = 0
         st.session_state.gram_ans = ""
         st.session_state.gram_revealed = False
-        st.session_state.gram_ai_fb = ""
         st.rerun()
 
     topic = GRAMMAR_EXERCISES[ti]
@@ -32,41 +30,24 @@ def render():
         "Your answer:", value=st.session_state.gram_ans,
         key=f"gram_input_{ti}_{ei}", height=90,
     )
-    c1, c2, c3, c4 = st.columns(4)
+    c1, c2, c3 = st.columns(3)
     with c1:
         if st.button("👁️ Show answer", use_container_width=True):
             st.session_state.gram_revealed = True
             st.session_state.gram_ans = user_ans
             st.rerun()
     with c2:
-        if st.button("🤖 AI Feedback", use_container_width=True):
-            st.session_state.gram_ans = user_ans
-            if user_ans.strip():
-                with st.spinner("Getting AI feedback..."):
-                    fb = get_ai_feedback(
-                        user_ans, ex["answer"],
-                        f"{topic['topic']} — {ex['instruction']} Prompt: {ex['prompt']}",
-                    )
-                    st.session_state.gram_ai_fb = fb
-            else:
-                st.warning("Please write your answer before requesting feedback.")
-            st.rerun()
-    with c3:
         if st.button("⬅️ Previous ex.", use_container_width=True):
             st.session_state.gram_ex_idx = (ei - 1) % len(topic["exercises"])
             st.session_state.gram_ans = ""
             st.session_state.gram_revealed = False
-            st.session_state.gram_ai_fb = ""
             st.rerun()
-    with c4:
+    with c3:
         if st.button("Next ex. ➡️", use_container_width=True):
             st.session_state.gram_ex_idx = (ei + 1) % len(topic["exercises"])
             st.session_state.gram_ans = ""
             st.session_state.gram_revealed = False
-            st.session_state.gram_ai_fb = ""
             st.rerun()
 
     if st.session_state.gram_revealed:
         st.success(f"✅ **Model answer:** {ex['answer']}")
-    if st.session_state.gram_ai_fb:
-        st.info(f"🤖 **AI Feedback:** {st.session_state.gram_ai_fb}")

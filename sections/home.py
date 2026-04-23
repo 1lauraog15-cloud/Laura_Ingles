@@ -27,7 +27,7 @@ def render():
         ("🔤", "Confusing Expressions", "7 topics",
          "I can tell · I'm afraid · May/Might/Should · used to · make vs do · False Friends · look/seem"),
         ("✍️", "Grammar", f"{len(GRAMMAR_EXERCISES)} topics",
-         "Advanced structures · exercises · AI feedback"),
+         "Advanced structures · exercises"),
         ("🎯", "Use of English", "4 exercise types",
          "KWT · Word Formation · MCC · Open Cloze"),
     ]
@@ -37,6 +37,5 @@ def render():
     st.markdown("---")
     st.markdown(
         "💡 **Tips:** Work through sections in order. "
-        "Use AI Feedback in Grammar to check open answers. "
         "Track your score in the sidebar."
     )

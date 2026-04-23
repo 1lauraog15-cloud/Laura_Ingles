@@ -37,7 +37,7 @@ def init_state():
         "conn_fill_flat_idx": 0, "conn_fill_ans": "", "conn_fill_checked": False,
         # grammar
         "gram_topic_idx": 0, "gram_ex_idx": 0,
-        "gram_ans": "", "gram_revealed": False, "gram_ai_fb": "",
+        "gram_ans": "", "gram_revealed": False,
         # kwt
         "kwt_idx": 0, "kwt_ans": "", "kwt_checked": False,
         # word formation
