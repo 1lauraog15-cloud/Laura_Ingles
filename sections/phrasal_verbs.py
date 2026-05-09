@@ -48,7 +48,7 @@ def render():
         st.markdown("**Complete the sentence with the correct phrasal verb:**")
         st.markdown(f'<div class="example-box">{pv["fill"]}</div>', unsafe_allow_html=True)
         st.markdown(f"🇪🇸 *{pv['translation']}* | 📖 *{pv['meaning']}*")
-        ans = st.text_input("Your answer:", key="pv_fill_input", value=st.session_state.pv_fill_ans)
+        ans = st.text_input("Your answer:", key="pv_fill_input")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("✅ Check", use_container_width=True, key="pv_fill_check"):
@@ -61,6 +61,7 @@ def render():
                 st.session_state.pv_fill_idx = random.randint(0, len(PHRASAL_VERBS) - 1)
                 st.session_state.pv_fill_ans = ""
                 st.session_state.pv_fill_checked = False
+                st.session_state["pv_fill_input"] = ""
                 st.rerun()
         if st.session_state.pv_fill_checked:
             if st.session_state.pv_fill_ans.strip().lower() == pv["pv"].lower():

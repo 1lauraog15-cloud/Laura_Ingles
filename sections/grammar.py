@@ -27,23 +27,23 @@ def render():
     st.markdown(f'<div class="example-box">📝 {ex["prompt"]}</div>', unsafe_allow_html=True)
 
     user_ans = st.text_area(
-        "Your answer:", value=st.session_state.gram_ans,
+        "Your answer:",
         key=f"gram_input_{ti}_{ei}", height=90,
     )
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("👁️ Show answer", use_container_width=True):
+        if st.button("👁️ Show answer", use_container_width=True, key="gram_show"):
             st.session_state.gram_revealed = True
             st.session_state.gram_ans = user_ans
             st.rerun()
     with c2:
-        if st.button("⬅️ Previous ex.", use_container_width=True):
+        if st.button("⬅️ Previous ex.", use_container_width=True, key="gram_prev"):
             st.session_state.gram_ex_idx = (ei - 1) % len(topic["exercises"])
             st.session_state.gram_ans = ""
             st.session_state.gram_revealed = False
             st.rerun()
     with c3:
-        if st.button("Next ex. ➡️", use_container_width=True):
+        if st.button("Next ex. ➡️", use_container_width=True, key="gram_nxt"):
             st.session_state.gram_ex_idx = (ei + 1) % len(topic["exercises"])
             st.session_state.gram_ans = ""
             st.session_state.gram_revealed = False

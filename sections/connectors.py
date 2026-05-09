@@ -21,7 +21,7 @@ def render():
         item = flat[fi]
         st.markdown(f"**Category hint: *{item['cat']}* | 🇪🇸 *{item['translation']}***")
         st.markdown(f'<div class="example-box">{item["fill"]}</div>', unsafe_allow_html=True)
-        ans = st.text_input("Your connector:", key="conn_fill_input", value=st.session_state.conn_fill_ans)
+        ans = st.text_input("Your connector:", key="conn_fill_input")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("✅ Check", use_container_width=True, key="conn_chk"):
@@ -34,6 +34,7 @@ def render():
                 st.session_state.conn_fill_flat_idx = random.randint(0, len(flat) - 1)
                 st.session_state.conn_fill_ans = ""
                 st.session_state.conn_fill_checked = False
+                st.session_state["conn_fill_input"] = ""
                 st.rerun()
         if st.session_state.conn_fill_checked:
             if st.session_state.conn_fill_ans.strip().lower() in item["word"].lower():

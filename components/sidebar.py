@@ -29,7 +29,7 @@ def render_sidebar() -> str:
     st.sidebar.markdown("---")
     section = st.sidebar.radio("Navigate", SECTIONS)
 
-    if st.sidebar.button("🔄 Reset score"):
+    if st.sidebar.button("🔄 Reset score", key="sidebar_reset_score"):
         st.session_state.score_correct = 0
         st.session_state.score_total = 0
         st.rerun()

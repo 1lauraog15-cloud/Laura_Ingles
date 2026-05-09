@@ -24,7 +24,7 @@ def render():
         st.progress((idx + 1) / len(kwt))
         st.markdown(f'<div class="example-box">📝 {ex["sentence"]}</div>', unsafe_allow_html=True)
         st.markdown(f"**Key word: `{ex['key']}`**")
-        ans = st.text_input("Your answer:", key=f"kwt_input_{idx}", value=st.session_state.kwt_ans)
+        ans = st.text_input("Your answer:", key=f"kwt_input_{idx}")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("✅ Check", use_container_width=True, key="kwt_chk"):
@@ -58,7 +58,7 @@ def render():
         st.markdown(f"*{idx+1} of {len(wf)}*")
         st.progress((idx + 1) / len(wf))
         st.markdown(f'<div class="example-box">📝 {ex["prompt"]}</div>', unsafe_allow_html=True)
-        ans = st.text_input("Your answer:", key=f"wf_input_{idx}", value=st.session_state.wf_ans)
+        ans = st.text_input("Your answer:", key=f"wf_input_{idx}")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("✅ Check", use_container_width=True, key="wf_chk"):
@@ -122,7 +122,6 @@ def render():
             with cols[i % 3]:
                 user_oc[num] = st.text_input(
                     f"Gap ({num}):", key=f"oc_{idx}_{num}",
-                    value=st.session_state.oc_answers.get(num, ""),
                 )
         c1, c2 = st.columns(2)
         with c1:
@@ -210,7 +209,6 @@ def render():
                 with cols[i % 4]:
                     user_cam2[num] = st.text_input(
                         f"Gap ({num}):", key=f"cam2_{num}",
-                        value=st.session_state.cam2_answers.get(num, ""),
                     )
             c1, c2 = st.columns(2)
             with c1:
@@ -222,6 +220,8 @@ def render():
                 if st.button("🔄 Reset", use_container_width=True, key="cam2_rst"):
                     st.session_state.cam2_answers = {}
                     st.session_state.cam2_checked = False
+                    for num in p2["answers"]:
+                        st.session_state[f"cam2_{num}"] = ""
                     st.rerun()
             if st.session_state.cam2_checked:
                 accepted = p2.get("accepted", {})
@@ -258,7 +258,7 @@ def render():
             st.markdown(f"*{idx3+1} of {len(items3)}*")
             st.progress((idx3 + 1) / len(items3))
             st.markdown(f'<div class="example-box">📝 {ex3["prompt"]}</div>', unsafe_allow_html=True)
-            ans3 = st.text_input("Your answer:", key=f"cam3_input_{idx3}", value=st.session_state.cam3_ans)
+            ans3 = st.text_input("Your answer:", key=f"cam3_input_{idx3}")
             c1, c2 = st.columns(2)
             with c1:
                 if st.button("✅ Check", use_container_width=True, key="cam3_chk"):
@@ -289,7 +289,7 @@ def render():
             st.progress((idx4 + 1) / len(items4))
             st.markdown(f'<div class="example-box">📝 {ex4["sentence"]}</div>', unsafe_allow_html=True)
             st.markdown(f"**Key word: `{ex4['key']}`**")
-            ans4 = st.text_input("Your answer:", key=f"cam4_input_{idx4}", value=st.session_state.cam4_ans)
+            ans4 = st.text_input("Your answer:", key=f"cam4_input_{idx4}")
             c1, c2 = st.columns(2)
             with c1:
                 if st.button("✅ Check", use_container_width=True, key="cam4_chk"):

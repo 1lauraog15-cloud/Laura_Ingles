@@ -30,22 +30,22 @@ def render():
             st.markdown(f'<div class="example-box">💬 <em>{w["example"]}</em></div>', unsafe_allow_html=True)
             st.markdown(f"📎 **Collocation:** *{w['collocation']}*")
         else:
-            if st.button("👁️ Reveal definition, synonyms & example", use_container_width=True):
+            if st.button("👁️ Reveal definition, synonyms & example", use_container_width=True, key="vocab_reveal"):
                 st.session_state.vocab_revealed = True
                 st.rerun()
         col1, col2, col3 = st.columns(3)
         with col1:
-            if st.button("⬅️ Previous", use_container_width=True):
+            if st.button("⬅️ Previous", use_container_width=True, key="vocab_prev"):
                 st.session_state.vocab_idx = (idx - 1) % len(VOCABULARY)
                 st.session_state.vocab_revealed = False
                 st.rerun()
         with col2:
-            if st.button("🔀 Random", use_container_width=True):
+            if st.button("🔀 Random", use_container_width=True, key="vocab_rand"):
                 st.session_state.vocab_idx = random.randint(0, len(VOCABULARY) - 1)
                 st.session_state.vocab_revealed = False
                 st.rerun()
         with col3:
-            if st.button("Next ➡️", use_container_width=True):
+            if st.button("Next ➡️", use_container_width=True, key="vocab_nxt_fc"):
                 st.session_state.vocab_idx = (idx + 1) % len(VOCABULARY)
                 st.session_state.vocab_revealed = False
                 st.rerun()
@@ -58,7 +58,7 @@ def render():
         st.markdown("**Complete the sentence with the correct word:**")
         st.markdown(f'<div class="example-box">{hidden}</div>', unsafe_allow_html=True)
         st.markdown(f"🇪🇸 *{fw['translation']}* | 📖 *{fw['definition']}*")
-        ans = st.text_input("Your answer:", key="vocab_fill_input", value=st.session_state.vocab_fill_ans)
+        ans = st.text_input("Your answer:", key="vocab_fill_input")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("✅ Check", use_container_width=True, key="vf_check"):
@@ -71,6 +71,7 @@ def render():
                 st.session_state.vocab_fill_idx = random.randint(0, len(VOCABULARY) - 1)
                 st.session_state.vocab_fill_ans = ""
                 st.session_state.vocab_fill_checked = False
+                st.session_state["vocab_fill_input"] = ""
                 st.rerun()
         if st.session_state.vocab_fill_checked:
             if st.session_state.vocab_fill_ans.strip().lower() == fw["word"].lower():

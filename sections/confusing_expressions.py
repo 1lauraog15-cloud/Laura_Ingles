@@ -54,7 +54,7 @@ def render():
             st.markdown(f'<div class="example-box">📝 {ex["prompt"]}</div>', unsafe_allow_html=True)
 
         user_ans = st.text_input(
-            "Your answer:", value=st.session_state.conf_ans,
+            "Your answer:",
             key=f"conf_input_{topic_key}_{ei}",
         )
         c1, c2, c3 = st.columns(3)

@@ -48,7 +48,7 @@ def render():
         st.markdown("**Fill in the missing preposition:**")
         st.markdown(f'<div class="example-box">{vp["fill"]}</div>', unsafe_allow_html=True)
         st.markdown(f"*Verb: **{vp['verb']}** + ?* | 🇪🇸 *{vp['translation']}*")
-        ans = st.text_input("Preposition:", key="vp_fill_input", value=st.session_state.vp_fill_ans)
+        ans = st.text_input("Preposition:", key="vp_fill_input")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("✅ Check", use_container_width=True, key="vp_fill_chk"):
@@ -61,6 +61,7 @@ def render():
                 st.session_state.vp_fill_idx = random.randint(0, len(VERBS_PREPOSITIONS) - 1)
                 st.session_state.vp_fill_ans = ""
                 st.session_state.vp_fill_checked = False
+                st.session_state["vp_fill_input"] = ""
                 st.rerun()
         if st.session_state.vp_fill_checked:
             if st.session_state.vp_fill_ans.strip().lower() == vp["prep"].lower():

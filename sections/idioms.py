@@ -48,7 +48,7 @@ def render():
         st.markdown("**Complete the sentence with the correct idiom:**")
         st.markdown(f'<div class="example-box">{item["fill"]}</div>', unsafe_allow_html=True)
         st.markdown(f"🇪🇸 *{item['translation']}*")
-        ans = st.text_input("Your idiom:", key=f"idiom_fill_{fi}", value=st.session_state.idiom_fill_ans)
+        ans = st.text_input("Your idiom:", key=f"idiom_fill_{fi}")
         c1, c2 = st.columns(2)
         with c1:
             if st.button("✅ Check", use_container_width=True, key="idiom_chk"):
