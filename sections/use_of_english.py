@@ -1,16 +1,17 @@
 import streamlit as st
 
-from data import USE_OF_ENGLISH
+from data import USE_OF_ENGLISH, CAMBRIDGE_TEST_1
 from components.state import add_score
 
 
 def render():
     st.title("🎯 Use of English")
-    tab1, tab2, tab3, tab4 = st.tabs([
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "Part 4 — Key Word Transformation",
         "Part 3 — Word Formation",
         "Part 1 — Multiple Choice Cloze",
         "Part 2 — Open Cloze",
+        "📋 Cambridge Exam Test 1",
     ])
 
     # ── Part 4: Key Word Transformation ─────────────────────────────────────
@@ -154,3 +155,159 @@ def render():
             if "tips" in oc:
                 with st.expander("💡 Gap-by-gap tips"):
                     st.markdown(oc["tips"])
+
+    # ── Cambridge Exam Test 1 ────────────────────────────────────────────────
+    with tab5:
+        st.markdown(f"### {CAMBRIDGE_TEST_1['title']}")
+        cam_p1, cam_p2, cam_p3, cam_p4 = st.tabs([
+            "Part 1 — MCC",
+            "Part 2 — Open Cloze",
+            "Part 3 — Word Formation",
+            "Part 4 — KWT",
+        ])
+
+        # ── Cambridge Part 1 ────────────────────────────────────────────────
+        with cam_p1:
+            p1 = CAMBRIDGE_TEST_1["Part 1"]
+            st.markdown(f"**{p1['title']}**")
+            st.markdown("*Choose the best option (A, B, C or D) for each gap.*")
+            st.markdown(f'<div class="example-box">📝 {p1["text"]}</div>', unsafe_allow_html=True)
+            st.markdown("---")
+            gap_idx = st.session_state.cam1_idx
+            gap = p1["gaps"][gap_idx]
+            st.markdown(f"*Gap {gap['num']} of {len(p1['gaps'])}*")
+            st.progress((gap_idx + 1) / len(p1["gaps"]))
+            sel = st.radio(f"Gap ({gap['num']}):", gap["options"], index=None, key=f"cam1_radio_{gap_idx}")
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check", use_container_width=True, key="cam1_chk"):
+                    st.session_state.cam1_sel = sel
+                    st.session_state.cam1_checked = True
+                    add_score(sel is not None and sel[0] == gap["answer"])
+                    st.rerun()
+            with c2:
+                if st.button("➡️ Next", use_container_width=True, key="cam1_nxt"):
+                    st.session_state.cam1_idx = (gap_idx + 1) % len(p1["gaps"])
+                    st.session_state.cam1_sel = None
+                    st.session_state.cam1_checked = False
+                    st.rerun()
+            if st.session_state.cam1_checked and st.session_state.cam1_sel:
+                if st.session_state.cam1_sel[0] == gap["answer"]:
+                    st.success(f"✅ Correct! **{gap['answer']}** — {gap['explanation']}")
+                else:
+                    st.error(f"❌ Correct: **{gap['answer']}** — {gap['explanation']}")
+
+        # ── Cambridge Part 2 ────────────────────────────────────────────────
+        with cam_p2:
+            p2 = CAMBRIDGE_TEST_1["Part 2"]
+            st.markdown(f"**{p2['title']}**")
+            st.markdown("*Fill each gap (9–16) with ONE word.*")
+            st.markdown(f'<div class="example-box">📝 {p2["text"]}</div>', unsafe_allow_html=True)
+            st.markdown("**Your answers:**")
+            user_cam2 = {}
+            cols = st.columns(4)
+            for i, num in enumerate(p2["answers"]):
+                with cols[i % 4]:
+                    user_cam2[num] = st.text_input(
+                        f"Gap ({num}):", key=f"cam2_{num}",
+                        value=st.session_state.cam2_answers.get(num, ""),
+                    )
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check all", use_container_width=True, key="cam2_chk"):
+                    st.session_state.cam2_answers = user_cam2
+                    st.session_state.cam2_checked = True
+                    st.rerun()
+            with c2:
+                if st.button("🔄 Reset", use_container_width=True, key="cam2_rst"):
+                    st.session_state.cam2_answers = {}
+                    st.session_state.cam2_checked = False
+                    st.rerun()
+            if st.session_state.cam2_checked:
+                accepted = p2.get("accepted", {})
+                right = 0
+                for num, correct in p2["answers"].items():
+                    val = st.session_state.cam2_answers.get(num, "").strip().lower()
+                    valid = [correct.lower()] + [a.lower() for a in accepted.get(num, [])]
+                    if val in valid:
+                        right += 1
+                total = len(p2["answers"])
+                if right == total:
+                    st.success(f"✅ Perfect! {right}/{total}")
+                else:
+                    st.warning(f"**{right}/{total} correct**")
+                for num, correct in p2["answers"].items():
+                    val = st.session_state.cam2_answers.get(num, "").strip()
+                    valid = [correct.lower()] + [a.lower() for a in accepted.get(num, [])]
+                    if val.lower() in valid:
+                        st.success(f"Gap ({num}): **{val}** ✅")
+                    else:
+                        alts = "/".join([correct] + accepted.get(num, []))
+                        st.error(f"Gap ({num}): *{val or '—'}* → **{alts}**")
+                with st.expander("💡 Tips"):
+                    st.markdown(p2["tips"])
+
+        # ── Cambridge Part 3 ────────────────────────────────────────────────
+        with cam_p3:
+            p3 = CAMBRIDGE_TEST_1["Part 3"]
+            st.markdown(f"**{p3['title']}**")
+            st.markdown("*Use the word in CAPITALS to form a word that fits the gap.*")
+            items3 = p3["items"]
+            idx3 = st.session_state.cam3_idx
+            ex3 = items3[idx3]
+            st.markdown(f"*{idx3+1} of {len(items3)}*")
+            st.progress((idx3 + 1) / len(items3))
+            st.markdown(f'<div class="example-box">📝 {ex3["prompt"]}</div>', unsafe_allow_html=True)
+            ans3 = st.text_input("Your answer:", key=f"cam3_input_{idx3}", value=st.session_state.cam3_ans)
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check", use_container_width=True, key="cam3_chk"):
+                    st.session_state.cam3_ans = ans3
+                    st.session_state.cam3_checked = True
+                    add_score(ans3.strip().lower() == ex3["answer"].lower())
+                    st.rerun()
+            with c2:
+                if st.button("➡️ Next", use_container_width=True, key="cam3_nxt"):
+                    st.session_state.cam3_idx = (idx3 + 1) % len(items3)
+                    st.session_state.cam3_ans = ""
+                    st.session_state.cam3_checked = False
+                    st.rerun()
+            if st.session_state.cam3_checked:
+                if st.session_state.cam3_ans.strip().lower() == ex3["answer"].lower():
+                    st.success(f"✅ Correct! **{ex3['answer']}**")
+                else:
+                    st.error(f"❌ Correct form: **{ex3['answer']}**")
+
+        # ── Cambridge Part 4 ────────────────────────────────────────────────
+        with cam_p4:
+            p4 = CAMBRIDGE_TEST_1["Part 4"]
+            st.markdown("*Rewrite each sentence using the key word. Use 3–6 words including the key word unchanged.*")
+            items4 = p4["items"]
+            idx4 = st.session_state.cam4_idx
+            ex4 = items4[idx4]
+            st.markdown(f"*{idx4+1} of {len(items4)}*")
+            st.progress((idx4 + 1) / len(items4))
+            st.markdown(f'<div class="example-box">📝 {ex4["sentence"]}</div>', unsafe_allow_html=True)
+            st.markdown(f"**Key word: `{ex4['key']}`**")
+            ans4 = st.text_input("Your answer:", key=f"cam4_input_{idx4}", value=st.session_state.cam4_ans)
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check", use_container_width=True, key="cam4_chk"):
+                    st.session_state.cam4_ans = ans4
+                    st.session_state.cam4_checked = True
+                    add_score(ans4.strip().lower().rstrip(".") == ex4["answer"].strip().lower().rstrip("."))
+                    st.rerun()
+            with c2:
+                if st.button("➡️ Next", use_container_width=True, key="cam4_nxt"):
+                    st.session_state.cam4_idx = (idx4 + 1) % len(items4)
+                    st.session_state.cam4_ans = ""
+                    st.session_state.cam4_checked = False
+                    st.rerun()
+            if st.session_state.cam4_checked:
+                st.success(f"**Model answer:** {ex4['answer']}")
+                if "pattern" in ex4:
+                    st.caption(f"🏷️ Pattern: *{ex4['pattern']}*")
+                if ans4.strip().lower().rstrip(".") == ex4["answer"].strip().lower().rstrip("."):
+                    st.success("✅ Perfect match!")
+                else:
+                    st.warning("⚠️ Compare carefully — minor variations may also be acceptable.")

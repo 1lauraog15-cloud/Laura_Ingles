@@ -1,5 +1,6 @@
 {
   "pythonVersion": "3.11",
   "include": ["."],
-  "extraPaths": ["."]
+  "extraPaths": ["."],
+  "pythonPath": "/usr/local/bin/python3"
 }

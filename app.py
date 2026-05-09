@@ -5,7 +5,7 @@ from components.sidebar import render_sidebar
 import sections.home, sections.vocabulary, sections.phrasal_verbs
 import sections.verbs_prepositions, sections.collocations, sections.connectors
 import sections.idioms, sections.confusing_expressions
-import sections.grammar, sections.use_of_english
+import sections.grammar, sections.use_of_english, sections.reading
 
 st.set_page_config(page_title="Laura_Inglés", page_icon="🎓", layout="wide")
 inject_styles()
@@ -23,5 +23,6 @@ ROUTES = {
     "🔤 Confusing Expressions": sections.confusing_expressions.render,
     "✍️ Grammar": sections.grammar.render,
     "🎯 Use of English": sections.use_of_english.render,
+    "📖 Reading": sections.reading.render,
 }
 ROUTES[section]()

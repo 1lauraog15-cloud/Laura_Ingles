@@ -160,3 +160,185 @@ USE_OF_ENGLISH = {
         },
     ],
 }
+
+# ── Cambridge C1 Advanced — Test 1 ──────────────────────────────────────────
+CAMBRIDGE_TEST_1 = {
+    "title": "Cambridge C1 Advanced — Test 1",
+
+    # Part 1 — Multiple Choice Cloze
+    "Part 1": {
+        "title": "The camera never lies",
+        "text": (
+            "In 1917, Arthur Conan Doyle, the creator of Sherlock Holmes, provided the (1)___ "
+            "for one of the most remarkable cases of self-deception in photographic history. "
+            "Two young girls from Cottingley, Yorkshire, claimed to have photographed real fairies "
+            "in their garden. Rather than (2)___ the images to the work of an imaginative child, "
+            "Doyle — himself a convinced spiritualist — publicly endorsed them as genuine. "
+            "The photographs were, of course, (3)___: the 'fairies' were paper cut-outs from a "
+            "children's book that had been (4)___ in front of a garden stream. What the case "
+            "(5)___ illustrates is how powerful the desire to believe can be. Ironically, the "
+            "whole affair (6)___ the very principles of rational enquiry that Doyle's most famous "
+            "character, Sherlock Holmes, supposedly embodied. The episode also had the unintended "
+            "effect of (7)___ others to attempt similar hoaxes using photographic technology. "
+            "Decades later, the Cottingley Fairies entered popular culture as a (8)___ that has "
+            "never quite lost its power to intrigue."
+        ),
+        "gaps": [
+            {
+                "num": 1,
+                "options": ["A) venue", "B) setting", "C) background", "D) surrounding"],
+                "answer": "B",
+                "explanation": "'Provide the setting for' is a fixed collocation meaning to create the backdrop or context for an event.",
+            },
+            {
+                "num": 2,
+                "options": ["A) calling", "B) naming", "C) attributing", "D) acknowledging"],
+                "answer": "C",
+                "explanation": "'Attributing sth to sth' = assigning the cause of something to something else. The others don't take the 'to' complement in this way.",
+            },
+            {
+                "num": 3,
+                "options": ["A) false", "B) faulty", "C) fake", "D) fictional"],
+                "answer": "C",
+                "explanation": "'Fake' = deliberately made to deceive. 'Faulty' means defective; 'fictional' belongs to stories; 'false' is more abstract.",
+            },
+            {
+                "num": 4,
+                "options": ["A) arranged", "B) spaced", "C) settled", "D) distributed"],
+                "answer": "A",
+                "explanation": "'Arranged in front of' = positioned deliberately. The others don't collocate naturally with 'in front of a backdrop'.",
+            },
+            {
+                "num": 5,
+                "options": ["A) categorically", "B) unavoidably", "C) substantially", "D) undeniably"],
+                "answer": "D",
+                "explanation": "'Undeniably illustrates' = without doubt demonstrates. 'Categorically' pairs with 'deny/state'; 'unavoidably' is less idiomatic here.",
+            },
+            {
+                "num": 6,
+                "options": ["A) weakens", "B) undermines", "C) demolishes", "D) dismantles"],
+                "answer": "B",
+                "explanation": "'Undermine principles/faith/confidence' is the strong collocation. 'Demolish' and 'dismantle' suggest complete destruction; 'weaken' is vaguer.",
+            },
+            {
+                "num": 7,
+                "options": ["A) letting", "B) supporting", "C) enabling", "D) empowering"],
+                "answer": "C",
+                "explanation": "'Enabling sb to do sth' = making it possible. 'Letting' takes bare infinitive; 'empowering' has a positive connotation unsuitable for 'hoaxers'.",
+            },
+            {
+                "num": 8,
+                "options": ["A) fantasy", "B) legend", "C) dream", "D) myth"],
+                "answer": "D",
+                "explanation": "'Myth' = a widely believed but false story. It perfectly captures something that entered culture as a false belief, unlike 'legend' (implies some historical truth) or 'fantasy' (purely imaginary).",
+            },
+        ],
+    },
+
+    # Part 2 — Open Cloze
+    "Part 2": {
+        "title": "Online passwords",
+        "text": (
+            "Almost (9)___ who uses the internet today will be familiar with the problems of "
+            "online security. Password theft has become so common that services (10)___ banks "
+            "and social media platforms now urge users to change their passwords regularly. "
+            "Experts recommend that users should (11)___ their passwords as hard to guess as "
+            "possible, ideally using a random combination of letters, numbers and symbols. "
+            "It is also advisable to use a different password (12)___ each account you hold "
+            "online. Passwords can also be strengthened (13)___ adding a series of random "
+            "characters at the end. The difficulty is that many people simply (14)___ too many "
+            "passwords to remember, which has led to the rise of specialist password management "
+            "software. Such apps store all your passwords in one place, freeing (15)___ space "
+            "in your memory for more important things. If you ever suspect that a password has "
+            "been stolen, you should find (16)___ immediately whether your other accounts have "
+            "also been compromised."
+        ),
+        "answers": {
+            "9": "anyone",
+            "10": "like",
+            "11": "make",
+            "12": "for",
+            "13": "by",
+            "14": "have",
+            "15": "up",
+            "16": "out",
+        },
+        "accepted": {
+            "9": ["anyone", "everybody"],
+            "10": ["like", "such as"],
+        },
+        "tips": (
+            "Gap 9: 'Almost anyone who…' — general person reference. "
+            "Gap 10: 'services LIKE/SUCH AS banks' — giving examples. "
+            "Gap 11: 'make sth as hard as possible' — fixed comparative structure. "
+            "Gap 12: 'a different password FOR each account' — preposition. "
+            "Gap 13: 'strengthened BY adding' — agent/means preposition. "
+            "Gap 14: 'people HAVE too many passwords' — simple present auxiliary. "
+            "Gap 15: 'freeing UP space' — phrasal verb. "
+            "Gap 16: 'find OUT whether' — phrasal verb meaning to discover."
+        ),
+    },
+
+    # Part 3 — Word Formation
+    "Part 3": {
+        "title": "Too many climbers on Mount Everest",
+        "items": [
+            {"num": 17, "base": "FAVOUR",    "prompt": "The weather conditions were far from (17)___ for an attempt on the summit. (FAVOUR)",    "answer": "favourable"},
+            {"num": 18, "base": "EXPECT",    "prompt": "The team suffered several (18)___ setbacks on their way to the higher camps. (EXPECT)",    "answer": "unexpected"},
+            {"num": 19, "base": "BEGIN",     "prompt": "The route now attracts not only seasoned climbers but also (19)___ with very little experience. (BEGIN)",   "answer": "beginners"},
+            {"num": 20, "base": "DESPERATE", "prompt": "In their (20)___ to reach the summit, many climbers ignore clear safety warnings. (DESPERATE)", "answer": "desperation"},
+            {"num": 21, "base": "DANGER",    "prompt": "Overcrowding on the upper slopes may (21)___ the lives of every climber on the mountain. (DANGER)",   "answer": "endanger"},
+            {"num": 22, "base": "SOLVE",     "prompt": "Finding a workable (22)___ to the problem of overcrowding has proved extremely difficult. (SOLVE)",    "answer": "solution"},
+            {"num": 23, "base": "ALTERNATE", "prompt": "(23)___, some climbers choose to attempt less-crowded peaks of a similar height. (ALTERNATE)", "answer": "Alternatively"},
+            {"num": 24, "base": "MOUNTAIN",  "prompt": "Experienced (24)___ warn that Everest should never be treated as a tourist attraction. (MOUNTAIN)",  "answer": "mountaineers"},
+        ],
+    },
+
+    # Part 4 — Key Word Transformation
+    "Part 4": {
+        "items": [
+            {
+                "num": 25,
+                "sentence": "She was told she should stop her children watching so much TV.",
+                "key": "let",
+                "answer": "She was advised not to let her children watch so much TV.",
+                "pattern": "stop + -ing → not let + bare infinitive",
+            },
+            {
+                "num": 26,
+                "sentence": "Driving in the city centre after 10 pm is now against the law.",
+                "key": "illegal",
+                "answer": "It has been made illegal to drive in the city centre after 10 pm.",
+                "pattern": "against the law → make it illegal to",
+            },
+            {
+                "num": 27,
+                "sentence": "He was late, which meant he missed the last train.",
+                "key": "time",
+                "answer": "If he had left in time, he would not have missed the last train.",
+                "pattern": "past result → third conditional with 'in time'",
+            },
+            {
+                "num": 28,
+                "sentence": "The new edition of the book has been thoroughly revised.",
+                "key": "thorough",
+                "answer": "The new edition of the book appears to be a thorough revision of the original.",
+                "pattern": "adverb + past participle → noun phrase with adjective",
+            },
+            {
+                "num": 29,
+                "sentence": "The temperature rose gradually over the following weeks.",
+                "key": "gradual",
+                "answer": "There was a gradual rise in temperature over the following weeks.",
+                "pattern": "verb + adverb → there was + adjective + noun",
+            },
+            {
+                "num": 30,
+                "sentence": "The new law didn't make any difference to the unemployment figures.",
+                "key": "consequence",
+                "answer": "The new law had no consequences for the unemployment figures.",
+                "pattern": "make no difference → have no consequences for",
+            },
+        ],
+    },
+}

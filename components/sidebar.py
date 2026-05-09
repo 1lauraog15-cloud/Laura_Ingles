@@ -11,6 +11,7 @@ SECTIONS = [
     "🔤 Confusing Expressions",
     "✍️ Grammar",
     "🎯 Use of English",
+    "📖 Reading",
 ]
 
 

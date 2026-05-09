@@ -52,6 +52,20 @@ def init_state():
         # confusing expressions
         "conf_topic": "I can tell / You can tell",
         "conf_ex_idx": 0, "conf_ans": "", "conf_revealed": False,
+        # Cambridge Test 1 — Part 1 MCC
+        "cam1_idx": 0, "cam1_sel": None, "cam1_checked": False,
+        # Cambridge Test 1 — Part 2 Open Cloze
+        "cam2_answers": {}, "cam2_checked": False,
+        # Cambridge Test 1 — Part 3 Word Formation
+        "cam3_idx": 0, "cam3_ans": "", "cam3_checked": False,
+        # Cambridge Test 1 — Part 4 KWT
+        "cam4_idx": 0, "cam4_ans": "", "cam4_checked": False,
+        # Reading section
+        "rdg_part": "Part 5",
+        "rdg5_idx": 0, "rdg5_sel": {}, "rdg5_checked": False,
+        "rdg6_sel": {}, "rdg6_checked": False,
+        "rdg7_sel": {}, "rdg7_checked": False,
+        "rdg8_sel": {}, "rdg8_checked": False,
     }
     for k, v in defaults.items():
         if k not in st.session_state:
