@@ -5,19 +5,17 @@ from components.state import add_score
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("🎯 Use of English")
-        tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    st.title("🎯 Use of English")
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
             "Part 4 — Key Word Transformation",
             "Part 3 — Word Formation",
             "Part 1 — Multiple Choice Cloze",
             "Part 2 — Open Cloze",
             "📋 Cambridge Exam Test 1",
-        ])
+    ])
 
-        # ── Part 4: Key Word Transformation ─────────────────────────────────────
-        with tab1:
+    # ── Part 4: Key Word Transformation ─────────────────────────────────────
+    with tab1:
             st.markdown("**Rewrite the sentence using the key word. Do not change the key word. Use 3–6 words.**")
             kwt = USE_OF_ENGLISH["Key Word Transformation"]
             idx = st.session_state.kwt_idx
@@ -51,8 +49,8 @@ def render():
                 else:
                     st.warning("⚠️ Compare carefully with the model answer above — minor variations may also be acceptable.")
 
-        # ── Part 3: Word Formation ───────────────────────────────────────────────
-        with tab2:
+    # ── Part 3: Word Formation ───────────────────────────────────────────────
+    with tab2:
             st.markdown("**Use the word in capitals to form a new word that fits the gap.**")
             wf = USE_OF_ENGLISH["Word Formation"]
             idx = st.session_state.wf_idx
@@ -80,8 +78,8 @@ def render():
                 else:
                     st.error(f"❌ Correct form: **{ex['answer']}**")
 
-        # ── Part 1: Multiple Choice Cloze ────────────────────────────────────────
-        with tab3:
+    # ── Part 1: Multiple Choice Cloze ────────────────────────────────────────
+    with tab3:
             st.markdown("**Choose the best option (A, B, C or D) to complete the sentence.**")
             mcc = USE_OF_ENGLISH["Multiple Choice Cloze"]
             idx = st.session_state.mcc_idx
@@ -109,8 +107,8 @@ def render():
                 else:
                     st.error(f"❌ Correct answer: **{ex['answer']}** — {ex['explanation']}")
 
-        # ── Part 2: Open Cloze ───────────────────────────────────────────────────
-        with tab4:
+    # ── Part 2: Open Cloze ───────────────────────────────────────────────────
+    with tab4:
             st.markdown("**Fill each gap with ONE word. No contractions.**")
             oc_list = USE_OF_ENGLISH["Open Cloze"]
             idx = st.session_state.oc_idx
@@ -157,8 +155,8 @@ def render():
                     with st.expander("💡 Gap-by-gap tips"):
                         st.markdown(oc["tips"])
 
-        # ── Cambridge Exam Test 1 ────────────────────────────────────────────────
-        with tab5:
+    # ── Cambridge Exam Test 1 ────────────────────────────────────────────────
+    with tab5:
             st.markdown(f"### {CAMBRIDGE_TEST_1['title']}")
             cam_p1, cam_p2, cam_p3, cam_p4 = st.tabs([
                 "Part 1 — MCC",
@@ -313,7 +311,3 @@ def render():
                         st.success("✅ Perfect match!")
                     else:
                         st.warning("⚠️ Compare carefully — minor variations may also be acceptable.")
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())

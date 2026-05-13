@@ -7,13 +7,11 @@ from components.state import add_score
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("📚 Vocabulary")
-        tab1, tab2, tab3 = st.tabs(["Flashcards", "Fill in the Blank", "Multiple Choice Quiz"])
+    st.title("📚 Vocabulary")
+    tab1, tab2, tab3 = st.tabs(["Flashcards", "Fill in the Blank", "Multiple Choice Quiz"])
 
-        # ── Flashcards ──────────────────────────────────────────────────────────
-        with tab1:
+    # ── Flashcards ──────────────────────────────────────────────────────────
+    with tab1:
             idx = st.session_state.vocab_idx
             w = VOCABULARY[idx]
             st.markdown(f"*Word {idx+1} of {len(VOCABULARY)}*")
@@ -52,8 +50,8 @@ def render():
                     st.session_state.vocab_revealed = False
                     st.rerun()
 
-        # ── Fill in the Blank ────────────────────────────────────────────────────
-        with tab2:
+    # ── Fill in the Blank ────────────────────────────────────────────────────
+    with tab2:
             fi = st.session_state.vocab_fill_idx
             fw = VOCABULARY[fi]
             hidden = re.sub(re.escape(fw["word"]), "___________", fw["example"], count=1, flags=re.IGNORECASE)
@@ -82,8 +80,8 @@ def render():
                     st.error(f"❌ The answer is: **{fw['word']}**")
                     st.markdown("**Synonyms:** " + " · ".join([f"`{s}`" for s in fw['synonyms']]))
 
-        # ── Multiple Choice Quiz ─────────────────────────────────────────────────
-        with tab3:
+    # ── Multiple Choice Quiz ─────────────────────────────────────────────────
+    with tab3:
             qi = st.session_state.vocab_quiz_idx
             qw = VOCABULARY[qi]
             if not st.session_state.vocab_quiz_options:
@@ -118,7 +116,3 @@ def render():
                 else:
                     st.error(f"❌ Correct definition: **{qw['definition']}**")
                 st.markdown(f'<div class="example-box">💬 <em>{qw["example"]}</em></div>', unsafe_allow_html=True)
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())

@@ -6,12 +6,10 @@ from components.state import add_score
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("⚡ Phrasal Verbs")
-        tab1, tab2 = st.tabs(["Flashcards", "Fill in the Blank"])
+    st.title("⚡ Phrasal Verbs")
+    tab1, tab2 = st.tabs(["Flashcards", "Fill in the Blank"])
 
-        with tab1:
+    with tab1:
             idx = st.session_state.pv_idx
             pv = PHRASAL_VERBS[idx]
             st.markdown(f"*{idx+1} of {len(PHRASAL_VERBS)}*")
@@ -44,7 +42,7 @@ def render():
                     st.session_state.pv_revealed = False
                     st.rerun()
 
-        with tab2:
+    with tab2:
             fi = st.session_state.pv_fill_idx
             pv = PHRASAL_VERBS[fi]
             st.markdown("**Complete the sentence with the correct phrasal verb:**")
@@ -70,7 +68,3 @@ def render():
                     st.success(f"✅ Correct! **{pv['pv']}** — {pv['meaning']}")
                 else:
                     st.error(f"❌ The phrasal verb is: **{pv['pv']}**\n\n*{pv['example']}*")
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())

@@ -6,12 +6,10 @@ from components.state import add_score
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("🔗 Verbs & Prepositions")
-        tab1, tab2 = st.tabs(["Flashcards", "Fill in the Blank"])
+    st.title("🔗 Verbs & Prepositions")
+    tab1, tab2 = st.tabs(["Flashcards", "Fill in the Blank"])
 
-        with tab1:
+    with tab1:
             idx = st.session_state.vp_idx
             vp = VERBS_PREPOSITIONS[idx]
             st.markdown(f"*{idx+1} of {len(VERBS_PREPOSITIONS)}*")
@@ -44,7 +42,7 @@ def render():
                     st.session_state.vp_revealed = False
                     st.rerun()
 
-        with tab2:
+    with tab2:
             fi = st.session_state.vp_fill_idx
             vp = VERBS_PREPOSITIONS[fi]
             st.markdown("**Fill in the missing preposition:**")
@@ -70,7 +68,3 @@ def render():
                     st.success(f"✅ Correct! **{vp['verb']} {vp['prep']}** — {vp['meaning']}")
                 else:
                     st.error(f"❌ Preposition: **{vp['prep']}** → *{vp['verb']} {vp['prep']}* — {vp['meaning']}")
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())

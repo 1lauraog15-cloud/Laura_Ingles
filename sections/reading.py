@@ -33,7 +33,7 @@ seen. What is clear is that the analogue revival is not, as it might first appea
 modernity. It is, rather, a highly modern response to some of the more troubling aspects of
 digital life.""",
     "questions": [
-        {
+    {
             "q": "What point does the writer make in the opening paragraph?",
             "options": [
                 "A) Analogue formats have never really disappeared from everyday life.",
@@ -43,8 +43,8 @@ digital life.""",
             ],
             "answer": "C",
             "explanation": "The writer describes it as 'almost paradoxical' and notes these formats were 'supposedly made obsolete', highlighting the unexpected nature of their revival.",
-        },
-        {
+    },
+    {
             "q": "What does the writer suggest about vinyl records in the second paragraph?",
             "options": [
                 "A) They produce objectively superior sound quality to streaming services.",
@@ -54,8 +54,8 @@ digital life.""",
             ],
             "answer": "B",
             "explanation": "'Physical weight' and 'warm crackle' engage the listener in a way that a playlist cannot — emphasising the sensory, physical qualities of the format.",
-        },
-        {
+    },
+    {
             "q": "The phrase 'too straightforward' (paragraph 3) implies that the writer considers the authenticity argument to be…",
             "options": [
                 "A) entirely convincing.",
@@ -65,8 +65,8 @@ digital life.""",
             ],
             "answer": "B",
             "explanation": "'May be too straightforward' signals that the explanation captures part of the truth but doesn't account for everything — especially the behaviour of younger consumers.",
-        },
-        {
+    },
+    {
             "q": "What does the writer say motivates many younger consumers to choose analogue formats?",
             "options": [
                 "A) A desire to connect with the experiences of older generations.",
@@ -76,8 +76,8 @@ digital life.""",
             ],
             "answer": "C",
             "explanation": "'To refuse the logic of a world in which everything is instant, frictionless and algorithmically curated' — the choice is an act of resistance, not nostalgia.",
-        },
-        {
+    },
+    {
             "q": "What does the writer mean when describing focused attention as 'its own form of luxury'?",
             "options": [
                 "A) Analogue products are expensive and therefore exclusive to wealthy consumers.",
@@ -87,8 +87,8 @@ digital life.""",
             ],
             "answer": "B",
             "explanation": "The 'rarity' referred to is that of 'focused, singular attention' — because it is rare in the digital age, the ability to experience it has acquired the status of a luxury.",
-        },
-        {
+    },
+    {
             "q": "What overall conclusion does the writer reach about the analogue revival?",
             "options": [
                 "A) It reflects a widespread and deep-seated rejection of modern technology.",
@@ -98,7 +98,7 @@ digital life.""",
             ],
             "answer": "C",
             "explanation": "'Not a retreat from modernity… a highly modern response to some of the more troubling aspects of digital life' — the revival is framed as sophisticated engagement, not escapism.",
-        },
+    },
     ],
 }
 
@@ -106,7 +106,7 @@ digital life.""",
 PART6 = {
     "title": "Four writers on arts education in schools",
     "texts": [
-        {
+    {
             "label": "A",
             "name": "Maria Santos",
             "text": (
@@ -118,8 +118,8 @@ PART6 = {
                 "than a necessity, we are impoverishing future generations. Arts education needs "
                 "to be protected, not merely tolerated as a reluctant concession to tradition."
             ),
-        },
-        {
+    },
+    {
             "label": "B",
             "name": "James Okafor",
             "text": (
@@ -131,8 +131,8 @@ PART6 = {
                 "Removing arts from the curriculum would, paradoxically, make students less "
                 "equipped for the modern workplace, not more."
             ),
-        },
-        {
+    },
+    {
             "label": "C",
             "name": "Elena Petrov",
             "text": (
@@ -143,8 +143,8 @@ PART6 = {
                 "honestly about career prospects in the creative industries, which, for most, are "
                 "limited. Enthusiasm alone is not sufficient preparation for adult life."
             ),
-        },
-        {
+    },
+    {
             "label": "D",
             "name": "Tom Walsh",
             "text": (
@@ -155,29 +155,29 @@ PART6 = {
                 "intrinsically valuable — because they teach students something about what it means "
                 "to be human — not because they produce more versatile workers."
             ),
-        },
+    },
     ],
     "questions": [
-        {
+    {
             "q": "Which writer shares Writer A's view that current educational trends are harming arts subjects?",
             "answer": "B",
             "explanation": "Both A and B are concerned that STEM priorities are crowding out arts — B calls it a 'false premise' to see them as competing, while A warns of 'impoverishing future generations'.",
-        },
-        {
+    },
+    {
             "q": "Which writer, unlike Writers A, B and D, emphasises practical career considerations in the debate?",
             "answer": "C",
             "explanation": "C explicitly argues for 'honest' advice about limited career prospects — the other writers do not prioritise employability outcomes in this way.",
-        },
-        {
+    },
+    {
             "q": "Which writer disagrees with Writer D about how arts education should be justified?",
             "answer": "C",
             "explanation": "C justifies arts in terms of its complementary value to core subjects and career outcomes. D explicitly rejects justifying arts through employability — the very approach C advocates.",
-        },
-        {
+    },
+    {
             "q": "Which writer expresses a view similar to Writer B about the relationship between arts and other disciplines?",
             "answer": "A",
             "explanation": "Both A and B reject the idea that arts and other subjects are in opposition. A argues arts develop qualities 'essential for society'; B says combining arts and technical skills is an advantage.",
-        },
+    },
     ],
 }
 
@@ -185,62 +185,62 @@ PART6 = {
 PART7 = {
     "title": "Urban Rewilding",
     "text_parts": [
-        "In cities across the world, a quiet revolution is taking place. Urban rewilding — the "
-        "deliberate restoration of natural habitats within city limits — has moved from a fringe "
-        "idea to a mainstream policy goal.",
+    "In cities across the world, a quiet revolution is taking place. Urban rewilding — the "
+    "deliberate restoration of natural habitats within city limits — has moved from a fringe "
+    "idea to a mainstream policy goal.",
 
-        "[1]",
+    "[1]",
 
-        "The movement draws on a simple but powerful insight: that human beings are not separate "
-        "from nature but part of it, and that the absence of nature in urban environments has "
-        "measurable costs.",
+    "The movement draws on a simple but powerful insight: that human beings are not separate "
+    "from nature but part of it, and that the absence of nature in urban environments has "
+    "measurable costs.",
 
-        "[2]",
+    "[2]",
 
-        "The practical challenges, however, are considerable. Land in cities is scarce and "
-        "expensive, and the competing demands of housing, transport and commerce make it difficult "
-        "to set aside significant areas for ecological restoration.",
+    "The practical challenges, however, are considerable. Land in cities is scarce and "
+    "expensive, and the competing demands of housing, transport and commerce make it difficult "
+    "to set aside significant areas for ecological restoration.",
 
-        "[3]",
+    "[3]",
 
-        "Advocates have responded to these challenges with considerable creativity.",
+    "Advocates have responded to these challenges with considerable creativity.",
 
-        "[4]",
+    "[4]",
 
-        "Green roofs, vertical gardens and pocket parks can provide habitats for insects, birds "
-        "and small mammals without requiring the dedication of large plots of land. There are also "
-        "wider benefits that are frequently overlooked.",
+    "Green roofs, vertical gardens and pocket parks can provide habitats for insects, birds "
+    "and small mammals without requiring the dedication of large plots of land. There are also "
+    "wider benefits that are frequently overlooked.",
 
-        "[5]",
+    "[5]",
 
-        "None of this will happen, of course, without sustained political will and genuine public "
-        "engagement.",
+    "None of this will happen, of course, without sustained political will and genuine public "
+    "engagement.",
 
-        "[6]",
+    "[6]",
 
-        "The most successful urban rewilding projects are those that involve local communities "
-        "from the outset — not as passive beneficiaries, but as active participants in the "
-        "planning and long-term maintenance of new green spaces.",
+    "The most successful urban rewilding projects are those that involve local communities "
+    "from the outset — not as passive beneficiaries, but as active participants in the "
+    "planning and long-term maintenance of new green spaces.",
     ],
     "options": {
-        "A": "These costs are not merely abstract: they have direct and well-documented implications for physical and mental health, with research consistently linking access to green space to lower rates of anxiety and cardiovascular disease.",
-        "B": "The solution, many planners now argue, lies in making better use of spaces that already exist within the urban fabric rather than seeking out entirely new sites.",
-        "C": "What was once considered the exclusive concern of environmental campaigners is now firmly on the agenda of urban planners, politicians and developers alike.",
-        "D": "By absorbing surface water and reducing the urban heat island effect, green spaces perform vital engineering functions that are both difficult and costly to replicate through built infrastructure.",
-        "E": "It is also worth noting that well-designed rewilding projects can attract significant private investment when their long-term economic benefits are clearly communicated to developers.",
-        "F": "Without commitment from both local authorities and residents, even the most ambitious and well-funded schemes are liable to stall before they can deliver meaningful results.",
-        "G": "Planners must therefore find innovative ways to incorporate nature into the existing fabric of urban development, rather than treating it as an afterthought to be addressed once other priorities have been met.",
+    "A": "These costs are not merely abstract: they have direct and well-documented implications for physical and mental health, with research consistently linking access to green space to lower rates of anxiety and cardiovascular disease.",
+    "B": "The solution, many planners now argue, lies in making better use of spaces that already exist within the urban fabric rather than seeking out entirely new sites.",
+    "C": "What was once considered the exclusive concern of environmental campaigners is now firmly on the agenda of urban planners, politicians and developers alike.",
+    "D": "By absorbing surface water and reducing the urban heat island effect, green spaces perform vital engineering functions that are both difficult and costly to replicate through built infrastructure.",
+    "E": "It is also worth noting that well-designed rewilding projects can attract significant private investment when their long-term economic benefits are clearly communicated to developers.",
+    "F": "Without commitment from both local authorities and residents, even the most ambitious and well-funded schemes are liable to stall before they can deliver meaningful results.",
+    "G": "Planners must therefore find innovative ways to incorporate nature into the existing fabric of urban development, rather than treating it as an afterthought to be addressed once other priorities have been met.",
     },
     "answers": {"1": "C", "2": "A", "3": "G", "4": "B", "5": "D", "6": "F"},
     "distractor": "E",
     "tips": {
-        "1": "C — the sentence explains what 'moved to mainstream policy goal' means by naming the new stakeholders.",
-        "2": "A — bridges 'measurable costs' to the specific health research evidence.",
-        "3": "G — expands on why scarce land forces creative thinking, leading into the next paragraph.",
-        "4": "B — introduces the 'small-scale' creative solutions (roofs, gardens) that follow.",
-        "5": "D — the 'wider benefits' referred to = drainage and heat island, not health (already covered).",
-        "6": "F — restates the 'political will' point in stronger terms before the positive conclusion.",
-        "E (distractor)": "Mentions private investment — interesting but doesn't connect to any gap's surrounding text.",
+    "1": "C — the sentence explains what 'moved to mainstream policy goal' means by naming the new stakeholders.",
+    "2": "A — bridges 'measurable costs' to the specific health research evidence.",
+    "3": "G — expands on why scarce land forces creative thinking, leading into the next paragraph.",
+    "4": "B — introduces the 'small-scale' creative solutions (roofs, gardens) that follow.",
+    "5": "D — the 'wider benefits' referred to = drainage and heat island, not health (already covered).",
+    "6": "F — restates the 'political will' point in stronger terms before the positive conclusion.",
+    "E (distractor)": "Mentions private investment — interesting but doesn't connect to any gap's surrounding text.",
     },
 }
 
@@ -249,7 +249,7 @@ PART8 = {
     "title": "Learning a musical instrument as an adult",
     "instruction": "Read the accounts of five adults (A–E) who took up a musical instrument later in life. For questions 47–56, choose from the people (A–E). The people may be chosen more than once.",
     "texts": [
-        {
+    {
             "label": "A",
             "name": "Rachel",
             "text": (
@@ -261,8 +261,8 @@ PART8 = {
                 "adult beginners. I'd expected to practise alone; the sense of community I found "
                 "there was something I hadn't bargained for at all."
             ),
-        },
-        {
+    },
+    {
             "label": "B",
             "name": "David",
             "text": (
@@ -273,8 +273,8 @@ PART8 = {
                 "struggle to. I practise every morning before work — thirty minutes, without fail. "
                 "The discipline of it has become part of my identity in a way I hadn't expected."
             ),
-        },
-        {
+    },
+    {
             "label": "C",
             "name": "Yuki",
             "text": (
@@ -285,8 +285,8 @@ PART8 = {
                 "unreal. My only regret is not starting sooner — I sometimes think about what "
                 "level I might have reached if I'd begun in my twenties."
             ),
-        },
-        {
+    },
+    {
             "label": "D",
             "name": "Patrick",
             "text": (
@@ -297,8 +297,8 @@ PART8 = {
                 "rhythmic nature of drumming has a meditative quality that I find more effective "
                 "than any other method I've tried for managing the pressures of daily life."
             ),
-        },
-        {
+    },
+    {
             "label": "E",
             "name": "Sophie",
             "text": (
@@ -310,50 +310,48 @@ PART8 = {
                 "a teaching qualification and now run weekly sessions for other adults who are "
                 "returning to instruments they once played."
             ),
-        },
+    },
     ],
     "questions": [
-        {"q": "Which person found that earlier experience made the learning process significantly easier?", "answer": "E"},
-        {"q": "Which person was pleasantly surprised by the social dimension of their new activity?", "answer": "A"},
-        {"q": "Which person believes that life experience has enhanced their musical understanding?", "answer": "B"},
-        {"q": "Which person chose to learn independently rather than through formal instruction?", "answer": "C"},
-        {"q": "Which person took up their instrument despite the objections of family members?", "answer": "D"},
-        {"q": "Which person now passes on their skill to others?", "answer": "E"},
-        {"q": "Which person describes the activity primarily as a way of relieving stress?", "answer": "D"},
-        {"q": "Which person mentions physical pain as part of the early learning experience?", "answer": "A"},
-        {"q": "Which person now performs in front of an audience?", "answer": "C"},
-        {"q": "Which person follows a fixed daily routine in order to practise?", "answer": "B"},
+    {"q": "Which person found that earlier experience made the learning process significantly easier?", "answer": "E"},
+    {"q": "Which person was pleasantly surprised by the social dimension of their new activity?", "answer": "A"},
+    {"q": "Which person believes that life experience has enhanced their musical understanding?", "answer": "B"},
+    {"q": "Which person chose to learn independently rather than through formal instruction?", "answer": "C"},
+    {"q": "Which person took up their instrument despite the objections of family members?", "answer": "D"},
+    {"q": "Which person now passes on their skill to others?", "answer": "E"},
+    {"q": "Which person describes the activity primarily as a way of relieving stress?", "answer": "D"},
+    {"q": "Which person mentions physical pain as part of the early learning experience?", "answer": "A"},
+    {"q": "Which person now performs in front of an audience?", "answer": "C"},
+    {"q": "Which person follows a fixed daily routine in order to practise?", "answer": "B"},
     ],
 }
 
 
 # ── Render ────────────────────────────────────────────────────────────────────
 def render():
-    try:
-        st.write("debug: render called")
-        # Ensure all state keys exist regardless of when the session was started
-        _defaults = {
+    # Ensure all state keys exist regardless of when the session was started
+    _defaults = {
             "rdg5_idx": 0, "rdg5_sel": {}, "rdg5_checked": False,
             "rdg6_sel": {}, "rdg6_checked": False,
             "rdg7_sel": {}, "rdg7_checked": False,
             "rdg8_sel": {}, "rdg8_checked": False,
-        }
-        for k, v in _defaults.items():
+    }
+    for k, v in _defaults.items():
             if k not in st.session_state:
                 st.session_state[k] = v
 
-        st.title("📖 Reading")
-        st.caption("Cambridge C1 Advanced — Reading Parts 5–8")
+    st.title("📖 Reading")
+    st.caption("Cambridge C1 Advanced — Reading Parts 5–8")
 
-        tab_p5, tab_p6, tab_p7, tab_p8 = st.tabs([
+    tab_p5, tab_p6, tab_p7, tab_p8 = st.tabs([
             "Part 5 — Multiple Choice",
             "Part 6 — Cross-text Matching",
             "Part 7 — Gapped Text",
             "Part 8 — Multiple Matching",
-        ])
+    ])
 
-        # ── Part 5 ───────────────────────────────────────────────────────────────
-        with tab_p5:
+    # ── Part 5 ───────────────────────────────────────────────────────────────
+    with tab_p5:
             st.markdown(f"### {PART5['title']}")
             st.markdown("*Read the text. Then answer questions 31–36 by choosing the best option (A, B, C or D).*")
             with st.expander("📄 Read the text", expanded=True):
@@ -395,8 +393,8 @@ def render():
                 else:
                     st.error(f"❌ Correct answer: **{q['answer']}** — {q['explanation']}")
 
-        # ── Part 6 ───────────────────────────────────────────────────────────────
-        with tab_p6:
+    # ── Part 6 ───────────────────────────────────────────────────────────────
+    with tab_p6:
             st.markdown(f"### {PART6['title']}")
             st.markdown(
                 "*Read the four texts below. Answer questions 37–40 by choosing from writers A–D. "
@@ -439,8 +437,8 @@ def render():
                         st.error(f"Q{i}: you chose *{chosen or '—'}* → correct: **{q['answer']}** — {q['explanation']}")
                 st.info(f"**Score: {right}/{len(PART6['questions'])}**")
 
-        # ── Part 7 ───────────────────────────────────────────────────────────────
-        with tab_p7:
+    # ── Part 7 ───────────────────────────────────────────────────────────────
+    with tab_p7:
             st.markdown(f"### {PART7['title']}")
             st.markdown(
                 "*Six paragraphs have been removed from the article. Choose from A–G the paragraph "
@@ -500,8 +498,8 @@ def render():
                     for gap_num, tip in PART7["tips"].items():
                         st.markdown(f"- **Gap {gap_num}:** {tip}")
 
-        # ── Part 8 ───────────────────────────────────────────────────────────────
-        with tab_p8:
+    # ── Part 8 ───────────────────────────────────────────────────────────────
+    with tab_p8:
             st.markdown(f"### {PART8['title']}")
             st.markdown(f"*{PART8['instruction']}*")
 
@@ -549,7 +547,3 @@ def render():
                 if right == len(PART8["questions"]):
                     st.balloons()
                 st.info(f"**Score: {right}/{len(PART8['questions'])}**")
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())

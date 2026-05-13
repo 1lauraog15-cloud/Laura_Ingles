@@ -7,13 +7,11 @@ from data import (
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("🎓 Laura_Inglés")
-        st.markdown("#### Cambridge C1/C2 — Your personalised preparation tool")
-        st.markdown("---")
-        cols = st.columns(4)
-        sections_info = [
+    st.title("🎓 Laura_Inglés")
+    st.markdown("#### Cambridge C1/C2 — Your personalised preparation tool")
+    st.markdown("---")
+    cols = st.columns(4)
+    sections_info = [
             ("📚", "Vocabulary", f"{len(VOCABULARY)} words",
              "Translations · synonyms · antonyms · collocations · flashcards · fill-in-the-blanks · quiz"),
             ("⚡", "Phrasal Verbs", f"{len(PHRASAL_VERBS)} phrasal verbs",
@@ -32,16 +30,12 @@ def render():
              "Advanced structures · exercises"),
             ("🎯", "Use of English", "4 exercise types",
              "KWT · Word Formation · MCC · Open Cloze"),
-        ]
-        for i, (icon, name, count, desc) in enumerate(sections_info):
+    ]
+    for i, (icon, name, count, desc) in enumerate(sections_info):
             with cols[i % 4]:
                 st.info(f"{icon} **{name}**\n\n*{count}*\n\n{desc}")
-        st.markdown("---")
-        st.markdown(
+    st.markdown("---")
+    st.markdown(
             "💡 **Tips:** Work through sections in order. "
             "Track your score in the sidebar."
-        )
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())
+    )

@@ -4,27 +4,25 @@ from data import CONFUSING_EXPRESSIONS
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("🔤 Confusing Expressions")
-        st.markdown("*Master the expressions that cause the most confusion for Spanish speakers.*")
+    st.title("🔤 Confusing Expressions")
+    st.markdown("*Master the expressions that cause the most confusion for Spanish speakers.*")
 
-        topic_key = st.selectbox(
+    topic_key = st.selectbox(
             "Choose a topic:",
             list(CONFUSING_EXPRESSIONS.keys()),
             index=list(CONFUSING_EXPRESSIONS.keys()).index(st.session_state.conf_topic),
-        )
-        if topic_key != st.session_state.conf_topic:
+    )
+    if topic_key != st.session_state.conf_topic:
             st.session_state.conf_topic = topic_key
             st.session_state.conf_ex_idx = 0
             st.session_state.conf_ans = ""
             st.session_state.conf_revealed = False
             st.rerun()
 
-        topic = CONFUSING_EXPRESSIONS[topic_key]
-        tab1, tab2 = st.tabs(["📖 Study & Examples", "✏️ Exercises"])
+    topic = CONFUSING_EXPRESSIONS[topic_key]
+    tab1, tab2 = st.tabs(["📖 Study & Examples", "✏️ Exercises"])
 
-        with tab1:
+    with tab1:
             with st.expander("📖 Explanation — click to expand", expanded=True):
                 st.markdown(topic["explanation"])
             st.markdown("---")
@@ -43,7 +41,7 @@ def render():
                         unsafe_allow_html=True,
                     )
 
-        with tab2:
+    with tab2:
             exercises = topic["exercises"]
             ei = st.session_state.conf_ex_idx % len(exercises)
             ex = exercises[ei]
@@ -87,7 +85,3 @@ def render():
                         st.success("✅ Your answer looks correct!")
                     else:
                         st.warning("⚠️ Compare your answer with the model above.")
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())

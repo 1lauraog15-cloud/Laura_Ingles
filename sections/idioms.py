@@ -6,12 +6,10 @@ from components.state import add_score
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("💬 Idioms & Expressions")
-        tab1, tab2 = st.tabs(["Flashcards", "Fill in the Blank"])
+    st.title("💬 Idioms & Expressions")
+    tab1, tab2 = st.tabs(["Flashcards", "Fill in the Blank"])
 
-        with tab1:
+    with tab1:
             idx = st.session_state.idiom_idx
             item = IDIOMS[idx]
             st.markdown(f"*{idx+1} of {len(IDIOMS)}*")
@@ -44,7 +42,7 @@ def render():
                     st.session_state.idiom_revealed = False
                     st.rerun()
 
-        with tab2:
+    with tab2:
             fi = st.session_state.idiom_fill_idx % len(IDIOMS)
             item = IDIOMS[fi]
             st.markdown("**Complete the sentence with the correct idiom:**")
@@ -75,7 +73,3 @@ def render():
                 else:
                     st.error(f"❌ The idiom is: **{item['idiom']}**")
                     st.markdown(f'<div class="example-box">💬 <em>{item["example"]}</em></div>', unsafe_allow_html=True)
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())

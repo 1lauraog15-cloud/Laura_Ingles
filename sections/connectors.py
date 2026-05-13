@@ -6,18 +6,16 @@ from components.state import add_score
 
 
 def render():
-    try:
-        st.write("debug: render called")
-        st.title("🔀 Connectors & Linkers")
-        tab1, tab2 = st.tabs(["Study by Category", "Fill in the Blank"])
+    st.title("🔀 Connectors & Linkers")
+    tab1, tab2 = st.tabs(["Study by Category", "Fill in the Blank"])
 
-        with tab1:
+    with tab1:
             cat = st.selectbox("Select category:", list(CONNECTORS.keys()))
             for item in CONNECTORS[cat]:
                 with st.expander(f"**{item['word']}** — 🇪🇸 *{item['translation']}*"):
                     st.markdown(f'<div class="example-box">💬 <em>{item["example"]}</em></div>', unsafe_allow_html=True)
 
-        with tab2:
+    with tab2:
             flat = [{"cat": cat, **item} for cat, items in CONNECTORS.items() for item in items]
             fi = st.session_state.conn_fill_flat_idx % len(flat)
             item = flat[fi]
@@ -44,7 +42,3 @@ def render():
                 else:
                     st.error(f"❌ The answer is: **{item['word']}**")
                     st.markdown(f'<div class="example-box">💬 <em>{item["example"]}</em></div>', unsafe_allow_html=True)
-    except Exception as e:
-        import traceback
-        st.error(str(e))
-        st.code(traceback.format_exc())
