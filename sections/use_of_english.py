@@ -6,6 +6,7 @@ from components.state import add_score
 
 def render():
     try:
+        st.write("debug: render called")
         st.title("🎯 Use of English")
         tab1, tab2, tab3, tab4, tab5 = st.tabs([
             "Part 4 — Key Word Transformation",

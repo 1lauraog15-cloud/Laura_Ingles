@@ -5,6 +5,7 @@ from data import GRAMMAR_EXERCISES
 
 def render():
     try:
+        st.write("debug: render called")
         st.title("✍️ Grammar Practice")
         topic_names = [t["topic"] for t in GRAMMAR_EXERCISES]
         sel_topic = st.selectbox("Choose a grammar topic:", topic_names, index=st.session_state.gram_topic_idx)

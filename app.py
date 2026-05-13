@@ -11,6 +11,7 @@ st.set_page_config(page_title="Laura_Inglés", page_icon="🎓", layout="wide")
 inject_styles()
 init_state()
 section = render_sidebar()
+st.write("debug: section =", section)
 
 ROUTES = {
     "🏠 Home": sections.home.render,

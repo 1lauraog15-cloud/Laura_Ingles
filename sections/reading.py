@@ -330,6 +330,7 @@ PART8 = {
 # ── Render ────────────────────────────────────────────────────────────────────
 def render():
     try:
+        st.write("debug: render called")
         # Ensure all state keys exist regardless of when the session was started
         _defaults = {
             "rdg5_idx": 0, "rdg5_sel": {}, "rdg5_checked": False,

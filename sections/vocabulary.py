@@ -8,6 +8,7 @@ from components.state import add_score
 
 def render():
     try:
+        st.write("debug: render called")
         st.title("📚 Vocabulary")
         tab1, tab2, tab3 = st.tabs(["Flashcards", "Fill in the Blank", "Multiple Choice Quiz"])
 

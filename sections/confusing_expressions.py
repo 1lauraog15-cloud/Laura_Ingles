@@ -5,6 +5,7 @@ from data import CONFUSING_EXPRESSIONS
 
 def render():
     try:
+        st.write("debug: render called")
         st.title("🔤 Confusing Expressions")
         st.markdown("*Master the expressions that cause the most confusion for Spanish speakers.*")
 

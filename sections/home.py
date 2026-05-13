@@ -8,6 +8,7 @@ from data import (
 
 def render():
     try:
+        st.write("debug: render called")
         st.title("🎓 Laura_Inglés")
         st.markdown("#### Cambridge C1/C2 — Your personalised preparation tool")
         st.markdown("---")

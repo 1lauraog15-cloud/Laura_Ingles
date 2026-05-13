@@ -7,6 +7,7 @@ from components.state import add_score
 
 def render():
     try:
+        st.write("debug: render called")
         st.title("🔀 Connectors & Linkers")
         tab1, tab2 = st.tabs(["Study by Category", "Fill in the Blank"])
 
