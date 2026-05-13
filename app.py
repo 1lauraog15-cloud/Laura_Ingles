@@ -8,9 +8,31 @@ import sections.idioms, sections.confusing_expressions
 import sections.grammar, sections.use_of_english, sections.reading
 
 st.set_page_config(page_title="Laura_Inglés", page_icon="🎓", layout="wide")
-inject_styles()
-init_state()
-section = render_sidebar()
+
+try:
+    inject_styles()
+except Exception as e:
+    import traceback
+    st.error(f"inject_styles() failed: {e}")
+    st.code(traceback.format_exc())
+    st.stop()
+
+try:
+    init_state()
+except Exception as e:
+    import traceback
+    st.error(f"init_state() failed: {e}")
+    st.code(traceback.format_exc())
+    st.stop()
+
+try:
+    section = render_sidebar()
+except Exception as e:
+    import traceback
+    st.error(f"render_sidebar() failed: {e}")
+    st.code(traceback.format_exc())
+    st.stop()
+
 st.write("debug: section =", section)
 
 ROUTES = {
