@@ -329,221 +329,226 @@ PART8 = {
 
 # ── Render ────────────────────────────────────────────────────────────────────
 def render():
-    # Ensure all state keys exist regardless of when the session was started
-    _defaults = {
-        "rdg5_idx": 0, "rdg5_sel": {}, "rdg5_checked": False,
-        "rdg6_sel": {}, "rdg6_checked": False,
-        "rdg7_sel": {}, "rdg7_checked": False,
-        "rdg8_sel": {}, "rdg8_checked": False,
-    }
-    for k, v in _defaults.items():
-        if k not in st.session_state:
-            st.session_state[k] = v
+    try:
+        # Ensure all state keys exist regardless of when the session was started
+        _defaults = {
+            "rdg5_idx": 0, "rdg5_sel": {}, "rdg5_checked": False,
+            "rdg6_sel": {}, "rdg6_checked": False,
+            "rdg7_sel": {}, "rdg7_checked": False,
+            "rdg8_sel": {}, "rdg8_checked": False,
+        }
+        for k, v in _defaults.items():
+            if k not in st.session_state:
+                st.session_state[k] = v
 
-    st.title("📖 Reading")
-    st.caption("Cambridge C1 Advanced — Reading Parts 5–8")
+        st.title("📖 Reading")
+        st.caption("Cambridge C1 Advanced — Reading Parts 5–8")
 
-    tab_p5, tab_p6, tab_p7, tab_p8 = st.tabs([
-        "Part 5 — Multiple Choice",
-        "Part 6 — Cross-text Matching",
-        "Part 7 — Gapped Text",
-        "Part 8 — Multiple Matching",
-    ])
+        tab_p5, tab_p6, tab_p7, tab_p8 = st.tabs([
+            "Part 5 — Multiple Choice",
+            "Part 6 — Cross-text Matching",
+            "Part 7 — Gapped Text",
+            "Part 8 — Multiple Matching",
+        ])
 
-    # ── Part 5 ───────────────────────────────────────────────────────────────
-    with tab_p5:
-        st.markdown(f"### {PART5['title']}")
-        st.markdown("*Read the text. Then answer questions 31–36 by choosing the best option (A, B, C or D).*")
-        with st.expander("📄 Read the text", expanded=True):
-            for para in PART5["text"].strip().split("\n\n"):
-                st.markdown(para.strip())
-        st.markdown("---")
+        # ── Part 5 ───────────────────────────────────────────────────────────────
+        with tab_p5:
+            st.markdown(f"### {PART5['title']}")
+            st.markdown("*Read the text. Then answer questions 31–36 by choosing the best option (A, B, C or D).*")
+            with st.expander("📄 Read the text", expanded=True):
+                for para in PART5["text"].strip().split("\n\n"):
+                    st.markdown(para.strip())
+            st.markdown("---")
 
-        qs = PART5["questions"]
-        idx = st.session_state.rdg5_idx
-        q = qs[idx]
-        st.markdown(f"**Question {31 + idx}** *(of {len(qs)})*")
-        st.progress((idx + 1) / len(qs))
-        st.markdown(f"**{q['q']}**")
-        sel = st.radio(
-            "Select an option:",
-            q["options"],
-            index=None,
-            key=f"rdg5_radio_{idx}",
-            label_visibility="collapsed",
-        )
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("✅ Check", use_container_width=True, key="rdg5_chk"):
-                updated = dict(st.session_state.rdg5_sel)
-                updated[idx] = sel
-                st.session_state.rdg5_sel = updated
-                st.session_state.rdg5_checked = True
-                add_score(sel is not None and sel[0] == q["answer"])
-                st.rerun()
-        with c2:
-            if st.button("➡️ Next question", use_container_width=True, key="rdg5_nxt"):
-                st.session_state.rdg5_idx = (idx + 1) % len(qs)
-                st.session_state.rdg5_checked = False
-                st.rerun()
-        if st.session_state.rdg5_checked:
-            chosen = st.session_state.rdg5_sel.get(idx)
-            if chosen and chosen[0] == q["answer"]:
-                st.success(f"✅ Correct! — {q['explanation']}")
-            else:
-                st.error(f"❌ Correct answer: **{q['answer']}** — {q['explanation']}")
-
-    # ── Part 6 ───────────────────────────────────────────────────────────────
-    with tab_p6:
-        st.markdown(f"### {PART6['title']}")
-        st.markdown(
-            "*Read the four texts below. Answer questions 37–40 by choosing from writers A–D. "
-            "You may choose any writer more than once.*"
-        )
-        for t in PART6["texts"]:
-            with st.expander(f"Writer **{t['label']}** — {t['name']}"):
-                st.markdown(t["text"])
-        st.markdown("---")
-
-        writers = ["A", "B", "C", "D"]
-        user_p6 = {}
-        for i, q in enumerate(PART6["questions"], start=37):
-            user_p6[i] = st.radio(
-                f"Q{i}. {q['q']}",
-                writers,
+            qs = PART5["questions"]
+            idx = st.session_state.rdg5_idx
+            q = qs[idx]
+            st.markdown(f"**Question {31 + idx}** *(of {len(qs)})*")
+            st.progress((idx + 1) / len(qs))
+            st.markdown(f"**{q['q']}**")
+            sel = st.radio(
+                "Select an option:",
+                q["options"],
                 index=None,
-                horizontal=True,
-                key=f"rdg6_q{i}",
+                key=f"rdg5_radio_{idx}",
+                label_visibility="collapsed",
             )
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("✅ Check all", use_container_width=True, key="rdg6_chk"):
-                st.session_state.rdg6_sel = dict(user_p6)
-                st.session_state.rdg6_checked = True
-                st.rerun()
-        with c2:
-            if st.button("🔄 Reset", use_container_width=True, key="rdg6_rst"):
-                st.session_state.rdg6_sel = {}
-                st.session_state.rdg6_checked = False
-                st.rerun()
-        if st.session_state.rdg6_checked:
-            right = 0
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check", use_container_width=True, key="rdg5_chk"):
+                    updated = dict(st.session_state.rdg5_sel)
+                    updated[idx] = sel
+                    st.session_state.rdg5_sel = updated
+                    st.session_state.rdg5_checked = True
+                    add_score(sel is not None and sel[0] == q["answer"])
+                    st.rerun()
+            with c2:
+                if st.button("➡️ Next question", use_container_width=True, key="rdg5_nxt"):
+                    st.session_state.rdg5_idx = (idx + 1) % len(qs)
+                    st.session_state.rdg5_checked = False
+                    st.rerun()
+            if st.session_state.rdg5_checked:
+                chosen = st.session_state.rdg5_sel.get(idx)
+                if chosen and chosen[0] == q["answer"]:
+                    st.success(f"✅ Correct! — {q['explanation']}")
+                else:
+                    st.error(f"❌ Correct answer: **{q['answer']}** — {q['explanation']}")
+
+        # ── Part 6 ───────────────────────────────────────────────────────────────
+        with tab_p6:
+            st.markdown(f"### {PART6['title']}")
+            st.markdown(
+                "*Read the four texts below. Answer questions 37–40 by choosing from writers A–D. "
+                "You may choose any writer more than once.*"
+            )
+            for t in PART6["texts"]:
+                with st.expander(f"Writer **{t['label']}** — {t['name']}"):
+                    st.markdown(t["text"])
+            st.markdown("---")
+
+            writers = ["A", "B", "C", "D"]
+            user_p6 = {}
             for i, q in enumerate(PART6["questions"], start=37):
-                chosen = st.session_state.rdg6_sel.get(i)
-                if chosen == q["answer"]:
-                    right += 1
-                    st.success(f"Q{i}: **{q['answer']}** ✅ — {q['explanation']}")
-                else:
-                    st.error(f"Q{i}: you chose *{chosen or '—'}* → correct: **{q['answer']}** — {q['explanation']}")
-            st.info(f"**Score: {right}/{len(PART6['questions'])}**")
-
-    # ── Part 7 ───────────────────────────────────────────────────────────────
-    with tab_p7:
-        st.markdown(f"### {PART7['title']}")
-        st.markdown(
-            "*Six paragraphs have been removed from the article. Choose from A–G the paragraph "
-            "which fits each gap. There is one extra paragraph you do not need to use.*"
-        )
-
-        with st.expander("📄 Read the article (with gaps)", expanded=True):
-            display = ""
-            for part in PART7["text_parts"]:
-                if part.startswith("["):
-                    display += f"\n\n**{part}** *(paragraph missing)*\n\n"
-                else:
-                    display += f"\n\n{part}"
-            st.markdown(display.strip())
-
-        st.markdown("---")
-        st.markdown("**Paragraph options:**")
-        for letter, text in PART7["options"].items():
-            with st.expander(f"**{letter}**"):
-                st.markdown(text)
-
-        st.markdown("---")
-        st.markdown("**Your answers — select a paragraph for each gap:**")
-
-        options_list = list(PART7["options"].keys())
-        user_p7 = {}
-        cols = st.columns(3)
-        for i, gap_num in enumerate(PART7["answers"].keys()):
-            with cols[i % 3]:
-                user_p7[gap_num] = st.selectbox(
-                    f"Gap [{gap_num}]:",
-                    ["—"] + options_list,
-                    key=f"rdg7_gap{gap_num}",
+                user_p6[i] = st.radio(
+                    f"Q{i}. {q['q']}",
+                    writers,
+                    index=None,
+                    horizontal=True,
+                    key=f"rdg6_q{i}",
                 )
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("✅ Check all", use_container_width=True, key="rdg7_chk"):
-                st.session_state.rdg7_sel = dict(user_p7)
-                st.session_state.rdg7_checked = True
-                st.rerun()
-        with c2:
-            if st.button("🔄 Reset", use_container_width=True, key="rdg7_rst"):
-                st.session_state.rdg7_sel = {}
-                st.session_state.rdg7_checked = False
-                st.rerun()
-        if st.session_state.rdg7_checked:
-            right = 0
-            for gap_num, correct in PART7["answers"].items():
-                chosen = st.session_state.rdg7_sel.get(gap_num, "—")
-                if chosen == correct:
-                    right += 1
-                    st.success(f"Gap [{gap_num}]: **{correct}** ✅")
-                else:
-                    st.error(f"Gap [{gap_num}]: you chose *{chosen}* → correct: **{correct}**")
-            st.info(f"**Score: {right}/{len(PART7['answers'])}**")
-            with st.expander("💡 Gap-by-gap explanations"):
-                for gap_num, tip in PART7["tips"].items():
-                    st.markdown(f"- **Gap {gap_num}:** {tip}")
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check all", use_container_width=True, key="rdg6_chk"):
+                    st.session_state.rdg6_sel = dict(user_p6)
+                    st.session_state.rdg6_checked = True
+                    st.rerun()
+            with c2:
+                if st.button("🔄 Reset", use_container_width=True, key="rdg6_rst"):
+                    st.session_state.rdg6_sel = {}
+                    st.session_state.rdg6_checked = False
+                    st.rerun()
+            if st.session_state.rdg6_checked:
+                right = 0
+                for i, q in enumerate(PART6["questions"], start=37):
+                    chosen = st.session_state.rdg6_sel.get(i)
+                    if chosen == q["answer"]:
+                        right += 1
+                        st.success(f"Q{i}: **{q['answer']}** ✅ — {q['explanation']}")
+                    else:
+                        st.error(f"Q{i}: you chose *{chosen or '—'}* → correct: **{q['answer']}** — {q['explanation']}")
+                st.info(f"**Score: {right}/{len(PART6['questions'])}**")
 
-    # ── Part 8 ───────────────────────────────────────────────────────────────
-    with tab_p8:
-        st.markdown(f"### {PART8['title']}")
-        st.markdown(f"*{PART8['instruction']}*")
-
-        for t in PART8["texts"]:
-            with st.expander(f"**{t['label']} — {t['name']}**"):
-                st.markdown(t["text"])
-
-        st.markdown("---")
-
-        people = ["A", "B", "C", "D", "E"]
-        user_p8 = {}
-        for i, q in enumerate(PART8["questions"], start=47):
-            user_p8[i] = st.radio(
-                f"Q{i}. {q['q']}",
-                people,
-                index=None,
-                horizontal=True,
-                key=f"rdg8_q{i}",
+        # ── Part 7 ───────────────────────────────────────────────────────────────
+        with tab_p7:
+            st.markdown(f"### {PART7['title']}")
+            st.markdown(
+                "*Six paragraphs have been removed from the article. Choose from A–G the paragraph "
+                "which fits each gap. There is one extra paragraph you do not need to use.*"
             )
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("✅ Check all", use_container_width=True, key="rdg8_chk"):
-                st.session_state.rdg8_sel = dict(user_p8)
-                st.session_state.rdg8_checked = True
-                right = sum(
-                    1 for i, q in enumerate(PART8["questions"], start=47)
-                    if user_p8.get(i) == q["answer"]
-                )
-                add_score(right == len(PART8["questions"]))
-                st.rerun()
-        with c2:
-            if st.button("🔄 Reset", use_container_width=True, key="rdg8_rst"):
-                st.session_state.rdg8_sel = {}
-                st.session_state.rdg8_checked = False
-                st.rerun()
-        if st.session_state.rdg8_checked:
-            right = 0
+
+            with st.expander("📄 Read the article (with gaps)", expanded=True):
+                display = ""
+                for part in PART7["text_parts"]:
+                    if part.startswith("["):
+                        display += f"\n\n**{part}** *(paragraph missing)*\n\n"
+                    else:
+                        display += f"\n\n{part}"
+                st.markdown(display.strip())
+
+            st.markdown("---")
+            st.markdown("**Paragraph options:**")
+            for letter, text in PART7["options"].items():
+                with st.expander(f"**{letter}**"):
+                    st.markdown(text)
+
+            st.markdown("---")
+            st.markdown("**Your answers — select a paragraph for each gap:**")
+
+            options_list = list(PART7["options"].keys())
+            user_p7 = {}
+            cols = st.columns(3)
+            for i, gap_num in enumerate(PART7["answers"].keys()):
+                with cols[i % 3]:
+                    user_p7[gap_num] = st.selectbox(
+                        f"Gap [{gap_num}]:",
+                        ["—"] + options_list,
+                        key=f"rdg7_gap{gap_num}",
+                    )
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check all", use_container_width=True, key="rdg7_chk"):
+                    st.session_state.rdg7_sel = dict(user_p7)
+                    st.session_state.rdg7_checked = True
+                    st.rerun()
+            with c2:
+                if st.button("🔄 Reset", use_container_width=True, key="rdg7_rst"):
+                    st.session_state.rdg7_sel = {}
+                    st.session_state.rdg7_checked = False
+                    st.rerun()
+            if st.session_state.rdg7_checked:
+                right = 0
+                for gap_num, correct in PART7["answers"].items():
+                    chosen = st.session_state.rdg7_sel.get(gap_num, "—")
+                    if chosen == correct:
+                        right += 1
+                        st.success(f"Gap [{gap_num}]: **{correct}** ✅")
+                    else:
+                        st.error(f"Gap [{gap_num}]: you chose *{chosen}* → correct: **{correct}**")
+                st.info(f"**Score: {right}/{len(PART7['answers'])}**")
+                with st.expander("💡 Gap-by-gap explanations"):
+                    for gap_num, tip in PART7["tips"].items():
+                        st.markdown(f"- **Gap {gap_num}:** {tip}")
+
+        # ── Part 8 ───────────────────────────────────────────────────────────────
+        with tab_p8:
+            st.markdown(f"### {PART8['title']}")
+            st.markdown(f"*{PART8['instruction']}*")
+
+            for t in PART8["texts"]:
+                with st.expander(f"**{t['label']} — {t['name']}**"):
+                    st.markdown(t["text"])
+
+            st.markdown("---")
+
+            people = ["A", "B", "C", "D", "E"]
+            user_p8 = {}
             for i, q in enumerate(PART8["questions"], start=47):
-                chosen = st.session_state.rdg8_sel.get(i)
-                if chosen == q["answer"]:
-                    right += 1
-                    st.success(f"Q{i}: **{q['answer']}** ✅")
-                else:
-                    st.error(f"Q{i}: you chose *{chosen or '—'}* → correct: **{q['answer']}**")
-            if right == len(PART8["questions"]):
-                st.balloons()
-            st.info(f"**Score: {right}/{len(PART8['questions'])}**")
+                user_p8[i] = st.radio(
+                    f"Q{i}. {q['q']}",
+                    people,
+                    index=None,
+                    horizontal=True,
+                    key=f"rdg8_q{i}",
+                )
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Check all", use_container_width=True, key="rdg8_chk"):
+                    st.session_state.rdg8_sel = dict(user_p8)
+                    st.session_state.rdg8_checked = True
+                    right = sum(
+                        1 for i, q in enumerate(PART8["questions"], start=47)
+                        if user_p8.get(i) == q["answer"]
+                    )
+                    add_score(right == len(PART8["questions"]))
+                    st.rerun()
+            with c2:
+                if st.button("🔄 Reset", use_container_width=True, key="rdg8_rst"):
+                    st.session_state.rdg8_sel = {}
+                    st.session_state.rdg8_checked = False
+                    st.rerun()
+            if st.session_state.rdg8_checked:
+                right = 0
+                for i, q in enumerate(PART8["questions"], start=47):
+                    chosen = st.session_state.rdg8_sel.get(i)
+                    if chosen == q["answer"]:
+                        right += 1
+                        st.success(f"Q{i}: **{q['answer']}** ✅")
+                    else:
+                        st.error(f"Q{i}: you chose *{chosen or '—'}* → correct: **{q['answer']}**")
+                if right == len(PART8["questions"]):
+                    st.balloons()
+                st.info(f"**Score: {right}/{len(PART8['questions'])}**")
+    except Exception as e:
+        import traceback
+        st.error(str(e))
+        st.code(traceback.format_exc())
